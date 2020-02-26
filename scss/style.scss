@@ -1,0 +1,221 @@
+@import "libs";
+// MIXIN & VARIABLES
+
+@mixin borderRightAndLeft {
+  content: "";
+  position: absolute;
+  height: 24px;
+  width: 1px;
+  background: #a5a5a5;
+}
+@mixin settingsForUl {
+  width: 159px;
+  min-height: 75px;
+  padding-top: 10px;
+  background: #dadada;
+  border: 1px solid #c0c0c0;
+  border-radius: 4px;
+  box-shadow: 0px 0px 3px 1px rgba(237, 237, 237, 1);
+}
+
+//BODY
+
+* {
+  box-sizing: border-box;
+}
+body {
+  background: #f8f8f8;
+  font-family: "Conv_9041", sans-serif;
+  font-size: 10px;
+  color: #555454;
+  border: 1px solid #d9d9d9;
+  border-radius: 4px;
+  width: 454px;
+  margin: auto;
+  box-shadow: 0px 0px 3px 1px rgba(240, 240, 240, 1);
+}
+
+//HEADER
+
+.main-header {
+  height: 48px;
+  margin-top: 26px;
+  margin-bottom: 21px;
+  background: linear-gradient(
+    to bottom,
+    #d9d9d9 0%,
+    #d2d2d2 2%,
+    #dedede 29%,
+    #dddddd 41%,
+    #d9d9d9 55%,
+    #c8c8c8 88%,
+    #c4c4c4 100%
+  );
+  nav {
+    height: 100%;
+    ul.nav {
+      height: 100%;
+      &:after {
+        content: "";
+        clear: both;
+        display: block;
+      }
+      li a {
+        display: block;
+        padding: 6px 10px;
+        font-family: "Oswald", sans-serif;
+        text-decoration: none;
+        color: #555454;
+      }
+      & > li {
+        float: left;
+        position: relative;
+        font-size: 14px;
+        height: 100%;
+        width: 126px;
+        font-weight: 600;
+        letter-spacing: 1px;
+        word-spacing: -1px;
+        padding-bottom: 55px;
+        &:hover {
+          &:after {
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 5px;
+            background: #b3403b;
+            bottom: 7.5px;
+          }
+        }
+        &:first-child {
+          margin-left: 73px;
+          margin-right: 17px;
+        }
+        &:first-child > a {
+          &:before {
+            @include borderRightAndLeft;
+            left: 0px;
+            top: 10px;
+          }
+          &:after {
+            @include borderRightAndLeft;
+            right: 0;
+            top: 10px;
+          }
+        }
+        &:nth-child(2) > a {
+          &:after {
+            @include borderRightAndLeft;
+            right: 0;
+            top: 10px;
+          }
+        }
+        a .link-substring {
+          position: absolute;
+          display: block;
+          font-size: 10px;
+          font-weight: normal;
+          padding-top: 5px;
+          letter-spacing: 0.5px;
+          word-spacing: 2px;
+        }
+        a .submenu-firstlevel {
+          &:after {
+            content: "\e902";
+            position: absolute;
+            font-family: "icomoon";
+            font-size: 10px;
+            color: #000000;
+            right: 4px;
+            margin-top: 10px;
+          }
+        }
+      }
+      & > li > ul {
+        display: none;
+        position: absolute;
+        top: 54px;
+        left: 0;
+        @include settingsForUl;
+      }
+      & > li:hover > ul {
+        display: block;
+      }
+      & > li > ul li {
+        position: relative;
+        font-size: 10px;
+        word-spacing: -3px;
+        left: -1px;
+        &:before {
+          content: "";
+          position: absolute;
+          width: 96%;
+          height: 1px;
+          background: #c4c4c4;
+          top: 24px;
+          left: 3.5px;
+        }
+      }
+      & > li > ul > li:hover > a {
+        color: #b34035;
+      }
+      & > li > ul > li:first-child {
+        margin-top: -3px;
+      }
+      & > li > ul > li:nth-child(2) {
+        bottom: -3px;
+        padding-right: 170px;
+        &:after {
+          content: "\e901";
+          position: absolute;
+          font-family: "icomoon";
+          font-size: 10px;
+          color: #000000;
+          right: 18px;
+          top: calc(50% - 4px);
+        }
+        & > a {
+          width: 159px;
+        }
+        &:before {
+          width: 89%;
+        }
+      }
+      & > li > ul > li:nth-child(2):hover:after {
+        color: #b34035;
+      }
+      & > li > ul > li > ul {
+        position: absolute;
+        display: none;
+        left: 168px;
+        top: 0;
+        @include settingsForUl;
+      }
+      & > li > ul > li > ul li {
+        word-spacing: -2px;
+        &:first-child {
+          top: -5px;
+        }
+        &:nth-child(2) {
+          top: -1px;
+        }
+      }
+      & > li > ul > li:hover > ul {
+        display: block;
+      }
+      & > li > ul a:hover {
+        color: #b34035;
+      }
+    }
+  }
+}
+main {
+  width: 410px;
+  margin: auto;
+  padding-bottom: 27px;
+  .main-text {
+    display: block;
+    width: 387px;
+    line-height: 18px;
+  }
+}
